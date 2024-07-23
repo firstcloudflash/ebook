@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EBooksCentralStore</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1em 0;
+            text-align: center;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 1em;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        section {
+            padding: 2em;
+            margin: 1em 0;
+            background-color: #fff;
+            border-radius: 8px;
+        }
+        .ebook-list {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .ebook-item {
+            flex: 1 1 300px;
+            margin: 1em;
+            padding: 1em;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+        .ebook-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        form label {
+            margin-top: 0.5em;
+        }
+        form input, form textarea, form button {
+            margin-top: 0.5em;
+            padding: 0.5em;
+        }
+    </style>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID"></script>
+</head>
+<body>
+    <header>
+        <h1>Adam's eBooks</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#ebooks">eBooks</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#cart">Cart</a></li>
+                <li><a href="#login">Login</a></li>
+                <li><a href="#register">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="home">
+        <h2>Welcome to Adam's eBooks</h2>
+        <p>Find the best eBooks here!</p>
+    </section>
+    <section id="ebooks">
+        <h2>eBooks</h2>
+        <div class="ebook-list" id="ebook-list"></div>
+    </section>
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form id="contact-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">EmailCertainly! Here’s a complete version of your eBook store website with the integration of Firebase for authentication, Firestore for storing eBook data, and PayPal for payments, all in a single HTML file:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adam's eBooks</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1em 0;
+            text-align: center;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 1em;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        section {
+            padding: 2em;
+            margin: 1em 0;
+            background-color: #fff;
+            border-radius: 8px;
+        }
+        .ebook-list {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .ebook-item {
+            flex: 1 1 300px;
+            margin: 1em;
+            padding: 1em;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+        .ebook-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        form label {
+            margin-top: 0.5em;
+        }
+        form input, form textarea, form button {
+            margin-top: 0.5em;
+            padding: 0.5em;
+        }
+    </style>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID"></script>
+</head>
+<body>
+    <header>
+        <h1>EBooksCentralStore</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#ebooks">eBooks</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#cart">Cart</a></li>
+                <li><a href="#login">Login</a></li>
+                <li><a href="#register">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="home">
+        <h2>Welcome to EBooksCentralStore</h2>
+        <p>Find the best eBooks here!</p>
+    </section>
+    <section id="ebooks">
+        <h2>eBooks</h2>
+        <div class="ebook-list" id="ebook-list"></div>
+    </section>
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form id="contact-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </section>
+    <section id="cart">
+        <h2>Your Cart</h2>
+        <div id="cart-items"></div>
+        <div id="cart-total"></div>
+        <div id="paypal-button-container"></div>
+    </section>
+    <section id="login">
+        <h2>Login</h2>
+        <form id="login-form">
+            <label for="login-email">Email:</label>
+            <input type="email" id="login-email" name="email" required>
+            <label for="login-password">Password:</label>
+            <input type="password" id="login-password" name="password" required>
+            <button type="submit">Login</button>
+        </form>
+    </section>
+    <section id="register">
+        <h2>Register</h2>
+        <form id="register-form">
+            <label for="register-email">Email:</label>
+            <input type="email" id="register-email" name="email" required>
+            <label for="register-password">Password:</label>
+            <input type="password" id="register-password" name="password" required>
+            <button type="submit">Register</button>
+        </form>
+    </section>
+    <footer>
+        <p>&copy; 2024 EBooksCentralStore. All rights reserved.</p>
+    </footer>
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT_ID.appspot.com",
+            messagingSenderId: "YOUR_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+        
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // Fetch eBooks from Firestore
+        const fetchEbooks = () => {
+            db.collection('ebooks').get().then((querySnapshot) => {
+                const ebookList = document.getElementById('ebook-list');
+                ebookList.innerHTML = '';
+                querySnapshot.forEach((doc) => {
+                    const ebook = doc.data();
+                    const ebookItem = document.createElement('div');
+                    ebookItem.classList.add('ebook-item');
+                    ebookItem.innerHTML = `
+                        <h3>${ebook.title}</h3>
+                        <img src="${ebook.imageUrl}" alt="${ebook.title}">
+                        <p>${ebook.description}</p>
+                        <p><strong>$${ebook.price.toFixed(2)}</strong></p>
+                        <button onclick="addToCart('${doc.id}', '${ebook.title}', ${ebook.price})">Add to Cart</button>
+                    `;
+                    ebookList.appendChild(ebookItem);
+                });
+            }).catch((error) => {
+                alert(error.message);
+            });
+        };
+
+        fetchEbooks();
+
+        // User Authentication
+        document.getElementById('register-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+            auth.createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    alert('User registered successfully');
+                })
+                .catch((error) => {
+                    alert(error.message);
+                });
+        });
+
+        document.getElementById('login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            auth.signInWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    alert('User logged in successfully');
+                })
+                .catch((error) => {
+                    alert(error.message);
+                });
+        });
+
+        // Cart functionality
+        let cart = [];
+
+        function addToCart(id, title, price) {
+            cart.push({ id, title, price });
+            displayCart();
+        }
+
+        function displayCart() {
+            const cartItems = document.getElementById('cart-items');
+            cartItems.innerHTML = cart.map(item => `<p>${item.title} - $${item.price.toFixed(2)}</p>`).join('');
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            document.getElementById('cart-total').innerText = `Total: $${total.toFixed(2)}`;
+
+            // Render PayPal button
+            paypal.Buttons({
+                createOrder: function(data, actions) {
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                value: total.toFixed(2)
+                            }
+                        }]
+                    });
+                },
+                onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(details) {
+                        alert('Transaction completed by ' + details.payer.name.given_name);
+                        cart = [];
+                        displayCart();
+                    });
+                }
+            }).render('#paypal-button-container');
+        }
+    </script>
+</body>
+  </html>
+                      
