@@ -1,363 +1,351 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EBooksCentralStore</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 1em 0;
-            text-align: center;
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-        }
-        nav ul li {
-            display: inline;
-            margin: 0 1em;
-        }
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-        }
-        section {
-            padding: 2em;
-            margin: 1em 0;
-            background-color: #fff;
-            border-radius: 8px;
-        }
-        .ebook-list {
-            display: flex;
-            flex-wrap: wrap;
-        }
-        .ebook-item {
-            flex: 1 1 300px;
-            margin: 1em;
-            padding: 1em;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            text-align: center;
-            background-color: #f9f9f9;
-        }
-        .ebook-item img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 1em 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-        form label {
-            margin-top: 0.5em;
-        }
-        form input, form textarea, form button {
-            margin-top: 0.5em;
-            padding: 0.5em;
-        }
-    </style>
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
-    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>CSS Gradient Veil Card</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:
+        radial-gradient(circle at top,
+        rgba(90,90,255,.15),
+        transparent 30%),
+
+        radial-gradient(circle at bottom,
+        rgba(255,120,120,.12),
+        transparent 35%),
+
+        #050505;
+
+      font-family:'Inter',sans-serif;
+      overflow:hidden;
+      padding:40px;
+    }
+
+    /* Ambient Glow */
+
+    .ambient-light{
+      position:absolute;
+      width:700px;
+      height:700px;
+      border-radius:50%;
+      filter:blur(120px);
+      opacity:.45;
+      z-index:0;
+    }
+
+    .ambient-light.one{
+      background:#4f7cff;
+      top:-250px;
+      left:-200px;
+    }
+
+    .ambient-light.two{
+      background:#ff6b9f;
+      bottom:-250px;
+      right:-200px;
+    }
+
+    /* Main Card */
+
+    .veil-card{
+      position:relative;
+      width:360px;
+      height:520px;
+      border-radius:34px;
+      overflow:hidden;
+
+      background:
+        radial-gradient(circle at top left,
+        rgba(255,255,255,.12),
+        transparent 25%),
+
+        radial-gradient(circle at bottom right,
+        rgba(255,255,255,.08),
+        transparent 30%),
+
+        linear-gradient(
+        145deg,
+        rgba(20,20,20,.95),
+        rgba(8,8,8,.92)
+        );
+
+      border:1px solid rgba(255,255,255,.08);
+
+      box-shadow:
+        0 20px 80px rgba(0,0,0,.6),
+        inset 0 1px 0 rgba(255,255,255,.08);
+
+      backdrop-filter:blur(30px);
+
+      z-index:2;
+    }
+
+    /* Gradient Veils */
+
+    .veil{
+      position:absolute;
+      border-radius:50%;
+      filter:blur(60px);
+      mix-blend-mode:screen;
+      opacity:.85;
+    }
+
+    .veil.one{
+      width:240px;
+      height:240px;
+      background:#7c5cff;
+      top:-60px;
+      left:-60px;
+      animation:floatOne 8s ease-in-out infinite;
+    }
+
+    .veil.two{
+      width:220px;
+      height:220px;
+      background:#ff4d8d;
+      bottom:-80px;
+      right:-60px;
+      animation:floatTwo 10s ease-in-out infinite;
+    }
+
+    .veil.three{
+      width:180px;
+      height:180px;
+      background:#5ee7ff;
+      top:40%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      opacity:.5;
+      animation:pulse 6s ease-in-out infinite;
+    }
+
+    /* Noise Overlay */
+
+    .noise{
+      position:absolute;
+      inset:0;
+      opacity:.05;
+      background-image:url("https://grainy-gradients.vercel.app/noise.svg");
+      background-size:cover;
+      mix-blend-mode:soft-light;
+      pointer-events:none;
+    }
+
+    /* Image */
+
+    .veil-card img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      z-index:2;
+
+      mix-blend-mode:screen;
+      opacity:.92;
+    }
+
+    /* Dark Fade */
+
+    .fade{
+      position:absolute;
+      inset:0;
+
+      background:
+        linear-gradient(
+        to top,
+        rgba(0,0,0,.82),
+        rgba(0,0,0,.15),
+        transparent
+        );
+
+      z-index:3;
+    }
+
+    /* Content */
+
+    .content{
+      position:absolute;
+      bottom:0;
+      left:0;
+      width:100%;
+      padding:28px;
+      z-index:5;
+      color:white;
+    }
+
+    .tag{
+      width:max-content;
+      padding:8px 14px;
+      border-radius:999px;
+
+      background:rgba(255,255,255,.08);
+
+      border:1px solid rgba(255,255,255,.1);
+
+      backdrop-filter:blur(20px);
+
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+
+      margin-bottom:16px;
+    }
+
+    h1{
+      font-size:34px;
+      line-height:1;
+      margin-bottom:12px;
+      font-weight:700;
+    }
+
+    p{
+      font-size:14px;
+      line-height:1.7;
+      color:rgba(255,255,255,.72);
+      margin-bottom:24px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+
+      padding:14px 22px;
+
+      border-radius:16px;
+
+      text-decoration:none;
+      color:white;
+      font-weight:600;
+
+      background:
+        linear-gradient(
+        135deg,
+        #7c5cff,
+        #5ee7ff
+        );
+
+      box-shadow:
+        0 10px 30px rgba(124,92,255,.35);
+
+      transition:.4s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-4px) scale(1.02);
+    }
+
+    /* Animations */
+
+    @keyframes floatOne{
+      0%,100%{
+        transform:translate(0,0);
+      }
+
+      50%{
+        transform:translate(20px,30px);
+      }
+    }
+
+    @keyframes floatTwo{
+      0%,100%{
+        transform:translate(0,0);
+      }
+
+      50%{
+        transform:translate(-30px,-20px);
+      }
+    }
+
+    @keyframes pulse{
+      0%,100%{
+        transform:translate(-50%,-50%) scale(1);
+      }
+
+      50%{
+        transform:translate(-50%,-50%) scale(1.2);
+      }
+    }
+
+  </style>
 </head>
+
 <body>
-    <header>
-        <h1>Adam's eBooks</h1>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#ebooks">eBooks</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#cart">Cart</a></li>
-                <li><a href="#login">Login</a></li>
-                <li><a href="#register">Register</a></li>
-            </ul>
-        </nav>
-    </header>
-    <section id="home">
-        <h2>Welcome to Adam's eBooks</h2>
-        <p>Find the best eBooks here!</p>
-    </section>
-    <section id="ebooks">
-        <h2>eBooks</h2>
-        <div class="ebook-list" id="ebook-list"></div>
-    </section>
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <form id="contact-form">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            <label for="email">EmailCertainly! Here’s a complete version of your eBook store website with the integration of Firebase for authentication, Firestore for storing eBook data, and PayPal for payments, all in a single HTML file:
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adam's eBooks</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 1em 0;
-            text-align: center;
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-        }
-        nav ul li {
-            display: inline;
-            margin: 0 1em;
-        }
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-        }
-        section {
-            padding: 2em;
-            margin: 1em 0;
-            background-color: #fff;
-            border-radius: 8px;
-        }
-        .ebook-list {
-            display: flex;
-            flex-wrap: wrap;
-        }
-        .ebook-item {
-            flex: 1 1 300px;
-            margin: 1em;
-            padding: 1em;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            text-align: center;
-            background-color: #f9f9f9;
-        }
-        .ebook-item img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 1em 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-        form label {
-            margin-top: 0.5em;
-        }
-        form input, form textarea, form button {
-            margin-top: 0.5em;
-            padding: 0.5em;
-        }
-    </style>
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
-    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID"></script>
-</head>
-<body>
-    <header>
-        <h1>EBooksCentralStore</h1>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#ebooks">eBooks</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#cart">Cart</a></li>
-                <li><a href="#login">Login</a></li>
-                <li><a href="#register">Register</a></li>
-            </ul>
-        </nav>
-    </header>
-    <section id="home">
-        <h2>Welcome to EBooksCentralStore</h2>
-        <p>Find the best eBooks here!</p>
-    </section>
-    <section id="ebooks">
-        <h2>eBooks</h2>
-        <div class="ebook-list" id="ebook-list"></div>
-    </section>
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <form id="contact-form">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
-            <button type="submit">Send</button>
-        </form>
-    </section>
-    <section id="cart">
-        <h2>Your Cart</h2>
-        <div id="cart-items"></div>
-        <div id="cart-total"></div>
-        <div id="paypal-button-container"></div>
-    </section>
-    <section id="login">
-        <h2>Login</h2>
-        <form id="login-form">
-            <label for="login-email">Email:</label>
-            <input type="email" id="login-email" name="email" required>
-            <label for="login-password">Password:</label>
-            <input type="password" id="login-password" name="password" required>
-            <button type="submit">Login</button>
-        </form>
-    </section>
-    <section id="register">
-        <h2>Register</h2>
-        <form id="register-form">
-            <label for="register-email">Email:</label>
-            <input type="email" id="register-email" name="email" required>
-            <label for="register-password">Password:</label>
-            <input type="password" id="register-password" name="password" required>
-            <button type="submit">Register</button>
-        </form>
-    </section>
-    <footer>
-        <p>&copy; 2024 EBooksCentralStore. All rights reserved.</p>
-    </footer>
-    <script>
-        // Firebase configuration
-        const firebaseConfig = {
-            apiKey: "YOUR_API_KEY",
-            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-            projectId: "YOUR_PROJECT_ID",
-            storageBucket: "YOUR_PROJECT_ID.appspot.com",
-            messagingSenderId: "YOUR_SENDER_ID",
-            appId: "YOUR_APP_ID"
-        };
-        
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        const auth = firebase.auth();
-        const db = firebase.firestore();
+  <!-- Ambient Lights -->
 
-        // Fetch eBooks from Firestore
-        const fetchEbooks = () => {
-            db.collection('ebooks').get().then((querySnapshot) => {
-                const ebookList = document.getElementById('ebook-list');
-                ebookList.innerHTML = '';
-                querySnapshot.forEach((doc) => {
-                    const ebook = doc.data();
-                    const ebookItem = document.createElement('div');
-                    ebookItem.classList.add('ebook-item');
-                    ebookItem.innerHTML = `
-                        <h3>${ebook.title}</h3>
-                        <img src="${ebook.imageUrl}" alt="${ebook.title}">
-                        <p>${ebook.description}</p>
-                        <p><strong>$${ebook.price.toFixed(2)}</strong></p>
-                        <button onclick="addToCart('${doc.id}', '${ebook.title}', ${ebook.price})">Add to Cart</button>
-                    `;
-                    ebookList.appendChild(ebookItem);
-                });
-            }).catch((error) => {
-                alert(error.message);
-            });
-        };
+  <div class="ambient-light one"></div>
+  <div class="ambient-light two"></div>
 
-        fetchEbooks();
+  <!-- Veil Card -->
 
-        // User Authentication
-        document.getElementById('register-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = document.getElementById('register-email').value;
-            const password = document.getElementById('register-password').value;
-            auth.createUserWithEmailAndPassword(email, password)
-                .then((userCredential) => {
-                    alert('User registered successfully');
-                })
-                .catch((error) => {
-                    alert(error.message);
-                });
-        });
+  <div class="veil-card">
 
-        document.getElementById('login-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = document.getElementById('login-email').value;
-            const password = document.getElementById('login-password').value;
-            auth.signInWithEmailAndPassword(email, password)
-                .then((userCredential) => {
-                    alert('User logged in successfully');
-                })
-                .catch((error) => {
-                    alert(error.message);
-                });
-        });
+    <!-- Gradient Veils -->
 
-        // Cart functionality
-        let cart = [];
+    <div class="veil one"></div>
+    <div class="veil two"></div>
+    <div class="veil three"></div>
 
-        function addToCart(id, title, price) {
-            cart.push({ id, title, price });
-            displayCart();
-        }
+    <!-- Noise Texture -->
 
-        function displayCart() {
-            const cartItems = document.getElementById('cart-items');
-            cartItems.innerHTML = cart.map(item => `<p>${item.title} - $${item.price.toFixed(2)}</p>`).join('');
-            const total = cart.reduce((sum, item) => sum + item.price, 0);
-            document.getElementById('cart-total').innerText = `Total: $${total.toFixed(2)}`;
+    <div class="noise"></div>
 
-            // Render PayPal button
-            paypal.Buttons({
-                createOrder: function(data, actions) {
-                    return actions.order.create({
-                        purchase_units: [{
-                            amount: {
-                                value: total.toFixed(2)
-                            }
-                        }]
-                    });
-                },
-                onApprove: function(data, actions) {
-                    return actions.order.capture().then(function(details) {
-                        alert('Transaction completed by ' + details.payer.name.given_name);
-                        cart = [];
-                        displayCart();
-                    });
-                }
-            }).render('#paypal-button-container');
-        }
-    </script>
+    <!-- Image -->
+
+    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop" alt="Portrait">
+
+    <!-- Fade -->
+
+    <div class="fade"></div>
+
+    <!-- Content -->
+
+    <div class="content">
+
+      <div class="tag">
+        DIGITAL VEIL SYSTEM
+      </div>
+
+      <h1>
+        Cinematic
+        Gradient
+        Card
+      </h1>
+
+      <p>
+        A photography-inspired CSS backdrop system using
+        layered gradients, atmospheric glow, blur,
+        cinematic shadows, and digital light veils.
+      </p>
+
+      <a href="#" class="btn">
+        Explore Design
+      </a>
+
+    </div>
+
+  </div>
+
 </body>
-  </html>
-                      
+</html>
