@@ -1,0 +1,33 @@
+{
+  "title": "Empire of Emotions",
+  "description": "A cinematic emotional universe built from memory and identity.",
+  
+  "realms": [
+    {
+      "name": "Grief",
+      "meaning": "What breaks you",
+      "color": "dark"
+    },
+    {
+      "name": "Power",
+      "meaning": "What controls you",
+      "color": "gold"
+    },
+    {
+      "name": "Identity",
+      "meaning": "What defines you",
+      "color": "mirror"
+    },
+    {
+      "name": "Memory",
+      "meaning": "What remains",
+      "color": "shadow"
+    }
+  ],
+
+  "entry_points": {
+    "story": "Novel universe access",
+    "collection": "Visual art archive",
+    "archive": "Lore fragments"
+  }
+}
