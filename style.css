@@ -1,26 +1,92 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: black;
-  color: white;
-  overflow-x: hidden;
+/* =========================================
+   EMPIRE OF EMOTIONS — DESIGN SYSTEM
+   Cinematic Glass + Emotional UI Architecture
+========================================= */
+
+:root {
+
+  /* 🎨 CORE EMPIRE PALETTE */
+  --color-primary: #1A1D1E;        /* deep world base */
+  --color-bg-deep: #0B0D0E;        /* abyss layer */
+  --color-secondary: #C5A875;      /* royal gold */
+  --color-tertiary: #D6722C;       /* emotional fire */
+
+  /* 🌫 SURFACES (GLASS SYSTEM) */
+  --surface-glass: rgba(30, 30, 30, 0.55);
+  --surface-glass-strong: rgba(30, 30, 30, 0.75);
+  --surface-border: rgba(255, 255, 255, 0.08);
+
+  /* ✍️ TEXT SYSTEM */
+  --text-main: #E8E8E8;
+  --text-muted: #A0A0A0;
+  --text-dim: #6E6E6E;
+
+  /* 🌌 EFFECTS SYSTEM */
+  --blur-glass: blur(18px);
+  --shadow-soft: 0 25px 80px rgba(0, 0, 0, 0.55);
+  --shadow-deep: 0 40px 120px rgba(0, 0, 0, 0.7);
+
+  --glow-gold: 0 0 30px rgba(197, 168, 117, 0.25);
+  --glow-fire: 0 0 35px rgba(214, 114, 44, 0.25);
+
+  /* 📐 SPACING SYSTEM */
+  --space-xs: 6px;
+  --space-sm: 12px;
+  --space-md: 20px;
+  --space-lg: 40px;
+  --space-xl: 80px;
+
+  /* 🔠 TYPOGRAPHY */
+  --font-main: "Inter", sans-serif;
+  --letter-spacing: 0.5px;
 }
 
-/* HERO */
+
+/* =========================================
+   GLOBAL RESET + BASE WORLD STYLE
+========================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: radial-gradient(
+    circle at top,
+    #1A1D1E 0%,
+    #0B0D0E 60%,
+    #050607 100%
+  );
+
+  color: var(--text-main);
+  font-family: var(--font-main);
+  overflow-x: hidden;
+  letter-spacing: var(--letter-spacing);
+}
+
+
+/* =========================================
+   HERO — CINEMATIC ENTRY FIELD
+========================================= */
+
 .hero {
   height: 100vh;
-  background: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee") center/cover no-repeat;
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  position: relative;
+  background: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee")
+  center/cover no-repeat;
 }
 
-.overlay {
+.hero::after {
+  content: "";
   position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.6);
+  inset: 0;
+  background: rgba(0,0,0,0.65);
 }
 
 .hero-content {
@@ -30,61 +96,131 @@ body {
 }
 
 .hero h1 {
-  font-size: 60px;
-  letter-spacing: 5px;
+  font-size: clamp(40px, 6vw, 90px);
+  letter-spacing: 8px;
+  text-transform: uppercase;
 }
 
 .hero p {
-  opacity: 0.8;
+  color: var(--text-muted);
+  margin-top: var(--space-sm);
 }
 
-/* SCENE */
+
+/* =========================================
+   SCENE TEXT — EMOTIONAL FLOAT LAYER
+========================================= */
+
 .scene {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 28px;
-  padding: 40px;
+
+  padding: var(--space-xl);
   text-align: center;
-  background: linear-gradient(to bottom, black, #0a0a0a);
+
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.2),
+    rgba(0,0,0,0.9)
+  );
+
+  font-size: clamp(18px, 2vw, 28px);
+  color: var(--text-main);
 }
 
-/* PORTALS */
+
+/* =========================================
+   PORTAL SYSTEM — ENTRY NODES
+========================================= */
+
 .portals {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: var(--space-lg);
+
+  padding: var(--space-xl) var(--space-md);
   align-items: center;
-  padding: 100px 20px;
-  background: #0b0b0b;
+  background: var(--color-bg-deep);
 }
 
 .portal {
-  width: 80%;
-  padding: 40px;
-  border: 1px solid rgba(255,255,255,0.2);
+  width: min(800px, 90%);
+  padding: var(--space-lg);
+
+  background: var(--surface-glass);
+  border: 1px solid var(--surface-border);
+  backdrop-filter: var(--blur-glass);
+
   text-align: center;
-  font-size: 22px;
+  font-size: 20px;
+
   cursor: pointer;
-  transition: 0.4s;
-  background: rgba(255,255,255,0.03);
+  transition: all 0.4s ease;
+
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+.portal::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(197, 168, 117, 0.08),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: 0.4s ease;
 }
 
 .portal:hover {
-  transform: scale(1.03);
-  border-color: gold;
-  color: gold;
+  transform: translateY(-8px);
+  border-color: rgba(197, 168, 117, 0.4);
+  box-shadow: var(--shadow-deep), var(--glow-gold);
 }
 
-/* FINAL */
+.portal:hover::before {
+  opacity: 1;
+}
+
+
+/* =========================================
+   FINAL LAYER — EXITLESS MEMORY FIELD
+========================================= */
+
 .final {
-  height: 50vh;
+  min-height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
-  opacity: 0.7;
+
+  padding: var(--space-xl);
   text-align: center;
-  padding: 40px;
+
+  color: var(--text-dim);
+  background: linear-gradient(
+    to top,
+    #050607,
+    #0B0D0E
+  );
+}
+
+
+/* =========================================
+   MICRO INTERACTIONS
+========================================= */
+
+::selection {
+  background: rgba(197, 168, 117, 0.3);
+  color: white;
+}
+
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
 }
