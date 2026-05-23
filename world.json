@@ -1,33 +1,121 @@
 {
-  "title": "Empire of Emotions",
-  "description": "A cinematic emotional universe built from memory and identity.",
-  
-  "realms": [
+  "world": {
+    "name": "Empire of Emotions",
+    "version": "2.0",
+    "type": "dual-reality emotional simulation system"
+  },
+
+  "realms": {
+    "realmA": {
+      "id": "forest_reality",
+      "name": "Reality A — Forest of Power",
+      "theme": "power / survival / structure",
+      "primaryColor": "#2C4A44",
+      "secondaryColor": "#E8A932",
+      "tertiaryColor": "#D13943",
+
+      "emotionCore": [
+        "control",
+        "dominance",
+        "struggle",
+        "discipline",
+        "growth through pressure"
+      ],
+
+      "visualStyle": {
+        "lighting": "low warm contrast",
+        "mood": "dense, grounded, organic",
+        "materials": "stone, wood, shadow glass"
+      }
+    },
+
+    "realmB": {
+      "id": "ethereal_reality",
+      "name": "Reality B — Ethereal Memory Field",
+      "theme": "memory / emotion / identity dissolution",
+      "primaryColor": "#F2F4F3",
+      "secondaryColor": "#F07F6D",
+      "tertiaryColor": "#52E8C7",
+
+      "emotionCore": [
+        "reflection",
+        "loss",
+        "clarity",
+        "dreaming",
+        "fragmented identity"
+      ],
+
+      "visualStyle": {
+        "lighting": "soft bloom high exposure",
+        "mood": "floating, light, dreamlike",
+        "materials": "glass, mist, energy particles"
+      }
+    }
+  },
+
+  "portals": [
     {
-      "name": "Grief",
-      "meaning": "What breaks you",
-      "color": "dark"
+      "id": "story",
+      "title": "Enter the Story",
+      "description": "Follow the emotional narrative of the Empire",
+      "type": "narrative",
+      "destination": "novel_layer"
     },
     {
-      "name": "Power",
-      "meaning": "What controls you",
-      "color": "gold"
+      "id": "collection",
+      "title": "Enter the Collection",
+      "description": "Explore visual fragments of the Empire",
+      "type": "visual",
+      "destination": "art_layer"
     },
     {
-      "name": "Identity",
-      "meaning": "What defines you",
-      "color": "mirror"
-    },
-    {
-      "name": "Memory",
-      "meaning": "What remains",
-      "color": "shadow"
+      "id": "archive",
+      "title": "Enter the Archive",
+      "description": "Study memory fragments and lore",
+      "type": "lore",
+      "destination": "world_archive"
     }
   ],
 
-  "entry_points": {
-    "story": "Novel universe access",
-    "collection": "Visual art archive",
-    "archive": "Lore fragments"
+  "emotionalSystem": {
+    "coreForces": [
+      "grief",
+      "power",
+      "identity",
+      "memory"
+    ],
+
+    "flowModel": [
+      "awakening",
+      "conflict",
+      "fragmentation",
+      "realization",
+      "integration"
+    ]
+  },
+
+  "monetizationLayers": {
+    "layer1": {
+      "name": "Narrative Layer",
+      "format": "novel",
+      "status": "primary entry point"
+    },
+    "layer2": {
+      "name": "Visual Layer",
+      "format": "AI art / Midjourney collections",
+      "status": "secondary entry point"
+    },
+    "layer3": {
+      "name": "Collectible Layer",
+      "format": "NFT / digital relics",
+      "status": "future expansion"
+    }
+  },
+
+  "systemRules": {
+    "designPrinciple": "Emotion first, UI second",
+    "interactionRule": "No direct selling language in surface UI",
+    "navigationRule": "User enters world, not website",
+    "visualRule": "Each realm must feel like a different physics system"
   }
 }
