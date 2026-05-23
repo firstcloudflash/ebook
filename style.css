@@ -1,74 +1,70 @@
 /* =========================================
-   EMPIRE OF EMOTIONS — DESIGN SYSTEM
-   Cinematic Glass + Emotional UI Architecture
+   FONTS
+========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Akronim&display=swap');
+
+
+/* =========================================
+   DESIGN TOKENS
 ========================================= */
 
 :root {
+  --bg: #0B0D0E;
+  --gold: #C5A875;
+  --fire: #D6722C;
+  --glass: rgba(30, 30, 30, 0.55);
+  --border: rgba(255,255,255,0.08);
+  --text: #EAEAEA;
+  --muted: #9A9A9A;
 
-  /* 🎨 CORE EMPIRE PALETTE */
-  --color-primary: #1A1D1E;        /* deep world base */
-  --color-bg-deep: #0B0D0E;        /* abyss layer */
-  --color-secondary: #C5A875;      /* royal gold */
-  --color-tertiary: #D6722C;       /* emotional fire */
-
-  /* 🌫 SURFACES (GLASS SYSTEM) */
-  --surface-glass: rgba(30, 30, 30, 0.55);
-  --surface-glass-strong: rgba(30, 30, 30, 0.75);
-  --surface-border: rgba(255, 255, 255, 0.08);
-
-  /* ✍️ TEXT SYSTEM */
-  --text-main: #E8E8E8;
-  --text-muted: #A0A0A0;
-  --text-dim: #6E6E6E;
-
-  /* 🌌 EFFECTS SYSTEM */
-  --blur-glass: blur(18px);
-  --shadow-soft: 0 25px 80px rgba(0, 0, 0, 0.55);
-  --shadow-deep: 0 40px 120px rgba(0, 0, 0, 0.7);
-
-  --glow-gold: 0 0 30px rgba(197, 168, 117, 0.25);
-  --glow-fire: 0 0 35px rgba(214, 114, 44, 0.25);
-
-  /* 📐 SPACING SYSTEM */
-  --space-xs: 6px;
-  --space-sm: 12px;
-  --space-md: 20px;
-  --space-lg: 40px;
-  --space-xl: 80px;
-
-  /* 🔠 TYPOGRAPHY */
-  --font-main: "Inter", sans-serif;
-  --letter-spacing: 0.5px;
+  --glow-gold: 0 0 25px rgba(197,168,117,0.35);
+  --glow-fire: 0 0 35px rgba(214,114,44,0.25);
 }
 
 
 /* =========================================
-   GLOBAL RESET + BASE WORLD STYLE
+   GLOBAL
 ========================================= */
 
-* {
+body {
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  background: radial-gradient(circle at top, #1A1D1E, #050607);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  position: relative;
 }
 
-body {
-  background: radial-gradient(
-    circle at top,
-    #1A1D1E 0%,
-    #0B0D0E 60%,
-    #050607 100%
-  );
+/* =========================================
+   ✨ GLOBAL SPARKLE LAYER
+========================================= */
 
-  color: var(--text-main);
-  font-family: var(--font-main);
-  overflow-x: hidden;
-  letter-spacing: var(--letter-spacing);
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+
+  background-image:
+    radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.4) 1px, transparent 0),
+    radial-gradient(1px 1px at 30% 80%, rgba(255,255,255,0.3) 1px, transparent 0),
+    radial-gradient(1px 1px at 70% 40%, rgba(255,255,255,0.2) 1px, transparent 0),
+    radial-gradient(1px 1px at 90% 10%, rgba(255,255,255,0.3) 1px, transparent 0);
+
+  animation: sparkleFloat 8s infinite linear;
+  opacity: 0.5;
+}
+
+@keyframes sparkleFloat {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
 }
 
 
 /* =========================================
-   HERO — CINEMATIC ENTRY FIELD
+   HERO
 ========================================= */
 
 .hero {
@@ -78,15 +74,30 @@ body {
   justify-content: center;
 
   position: relative;
-  background: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee")
-  center/cover no-repeat;
+  overflow: hidden;
+
+  background: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee") center/cover;
 }
 
 .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.65);
+  background: rgba(0,0,0,0.6);
+}
+
+/* soft light sweep */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  background: radial-gradient(circle, rgba(197,168,117,0.12), transparent 60%);
+  animation: glowMove 6s infinite alternate;
+}
+
+@keyframes glowMove {
+  from { transform: translate(-10%, -10%); }
+  to { transform: translate(10%, 10%); }
 }
 
 .hero-content {
@@ -95,20 +106,23 @@ body {
   z-index: 2;
 }
 
+/* ✨ AKRONIM SIGNATURE TITLE */
 .hero h1 {
-  font-size: clamp(40px, 6vw, 90px);
-  letter-spacing: 8px;
-  text-transform: uppercase;
+  font-family: 'Akronim', display;
+  font-size: clamp(60px, 8vw, 120px);
+  color: var(--gold);
+  text-shadow: 0 0 30px rgba(197,168,117,0.4);
+  letter-spacing: 4px;
 }
 
 .hero p {
-  color: var(--text-muted);
-  margin-top: var(--space-sm);
+  color: var(--muted);
+  margin-top: 10px;
 }
 
 
 /* =========================================
-   SCENE TEXT — EMOTIONAL FLOAT LAYER
+   SCENE TEXT
 ========================================= */
 
 .scene {
@@ -117,79 +131,80 @@ body {
   align-items: center;
   justify-content: center;
 
-  padding: var(--space-xl);
   text-align: center;
+  padding: 80px;
 
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.2),
-    rgba(0,0,0,0.9)
-  );
-
-  font-size: clamp(18px, 2vw, 28px);
-  color: var(--text-main);
+  font-size: clamp(18px, 2vw, 26px);
 }
 
 
 /* =========================================
-   PORTAL SYSTEM — ENTRY NODES
+   PORTALS (LIVING CARDS)
 ========================================= */
 
 .portals {
   display: flex;
   flex-direction: column;
-  gap: var(--space-lg);
-
-  padding: var(--space-xl) var(--space-md);
+  gap: 40px;
   align-items: center;
-  background: var(--color-bg-deep);
+  padding: 120px 20px;
+  background: var(--bg);
 }
 
 .portal {
-  width: min(800px, 90%);
-  padding: var(--space-lg);
+  width: min(850px, 92%);
+  padding: 50px;
 
-  background: var(--surface-glass);
-  border: 1px solid var(--surface-border);
-  backdrop-filter: var(--blur-glass);
+  background: var(--glass);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(18px);
 
   text-align: center;
-  font-size: 20px;
+  font-size: 22px;
 
-  cursor: pointer;
-  transition: all 0.4s ease;
-
-  box-shadow: var(--shadow-soft);
   position: relative;
   overflow: hidden;
+
+  transition: 0.4s ease;
+  box-shadow: 0 25px 80px rgba(0,0,0,0.5);
 }
 
+/* ✨ shimmer sweep */
 .portal::before {
   content: "";
   position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    circle at center,
-    rgba(197, 168, 117, 0.08),
-    transparent 60%
-  );
-  opacity: 0;
-  transition: 0.4s ease;
-}
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
 
-.portal:hover {
-  transform: translateY(-8px);
-  border-color: rgba(197, 168, 117, 0.4);
-  box-shadow: var(--shadow-deep), var(--glow-gold);
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.08),
+    transparent
+  );
+
+  transform: skewX(-20deg);
 }
 
 .portal:hover::before {
-  opacity: 1;
+  animation: shimmer 1.2s ease forwards;
+}
+
+@keyframes shimmer {
+  to { left: 150%; }
+}
+
+.portal:hover {
+  transform: translateY(-10px);
+  border-color: rgba(197,168,117,0.5);
+  box-shadow: 0 30px 90px rgba(0,0,0,0.6), var(--glow-gold);
 }
 
 
 /* =========================================
-   FINAL LAYER — EXITLESS MEMORY FIELD
+   FINAL SECTION
 ========================================= */
 
 .final {
@@ -198,29 +213,9 @@ body {
   align-items: center;
   justify-content: center;
 
-  padding: var(--space-xl);
+  padding: 80px;
   text-align: center;
 
-  color: var(--text-dim);
-  background: linear-gradient(
-    to top,
-    #050607,
-    #0B0D0E
-  );
-}
-
-
-/* =========================================
-   MICRO INTERACTIONS
-========================================= */
-
-::selection {
-  background: rgba(197, 168, 117, 0.3);
-  color: white;
-}
-
-
-/* Smooth scroll behavior */
-html {
-  scroll-behavior: smooth;
+  color: var(--muted);
+  background: linear-gradient(to top, #050607, #0B0D0E);
 }
