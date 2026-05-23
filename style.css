@@ -1,70 +1,138 @@
 /* =========================================
-   FONTS
+   EMPIRE OF EMOTIONS — WORLD ENGINE CSS
+   Dual Reality Cinematic System v2
 ========================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Akronim&display=swap');
 
 
 /* =========================================
-   DESIGN TOKENS
+   ROOT DESIGN SYSTEM
 ========================================= */
 
 :root {
-  --bg: #0B0D0E;
-  --gold: #C5A875;
-  --fire: #D6722C;
-  --glass: rgba(30, 30, 30, 0.55);
-  --border: rgba(255,255,255,0.08);
-  --text: #EAEAEA;
-  --muted: #9A9A9A;
 
-  --glow-gold: 0 0 25px rgba(197,168,117,0.35);
-  --glow-fire: 0 0 35px rgba(214,114,44,0.25);
+  /* 🌿 REALITY A — FOREST / POWER */
+  --a-bg: #2C4A44;
+  --a-accent: #E8A932;
+  --a-danger: #D13943;
+
+  /* 🌅 REALITY B — ETHEREAL / MEMORY */
+  --b-bg: #F2F4F3;
+  --b-accent: #F07F6D;
+  --b-interactive: #52E8C7;
+
+  /* 🌌 GLOBAL DEPTH */
+  --dark-bg: #0B0D0E;
+
+  /* 🧊 GLASS SYSTEM */
+  --glass: rgba(255, 255, 255, 0.06);
+  --glass-strong: rgba(255, 255, 255, 0.1);
+  --border: rgba(255,255,255,0.12);
+
+  --blur: 20px;
+
+  /* ✨ LIGHT SYSTEM */
+  --glow-gold: 0 0 30px rgba(232,169,50,0.35);
+  --glow-red: 0 0 30px rgba(209,57,67,0.25);
+  --glow-teal: 0 0 30px rgba(82,232,199,0.25);
+
+  /* 🌫 SHADOW */
+  --shadow: 0 25px 80px rgba(0,0,0,0.55);
+
+  /* 🖋 TYPOGRAPHY */
+  --font-main: "Inter", sans-serif;
+  --font-hero: "Akronim", display;
 }
 
 
 /* =========================================
-   GLOBAL
+   GLOBAL RESET
 ========================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
-  margin: 0;
-  background: radial-gradient(circle at top, #1A1D1E, #050607);
-  color: var(--text);
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-main);
+  color: white;
   overflow-x: hidden;
-  position: relative;
+  background: radial-gradient(circle at top, #1A1D1E, #050607);
 }
 
+
 /* =========================================
-   ✨ GLOBAL SPARKLE LAYER
+   SPARKLE LAYER (CONTROLLED ENERGY FIELD)
 ========================================= */
 
-body::before {
-  content: "";
+.sparkle-layer {
   position: fixed;
   inset: 0;
   pointer-events: none;
+  z-index: 1;
+}
+
+.sparkle-layer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
 
   background-image:
-    radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.4) 1px, transparent 0),
-    radial-gradient(1px 1px at 30% 80%, rgba(255,255,255,0.3) 1px, transparent 0),
-    radial-gradient(1px 1px at 70% 40%, rgba(255,255,255,0.2) 1px, transparent 0),
-    radial-gradient(1px 1px at 90% 10%, rgba(255,255,255,0.3) 1px, transparent 0);
+    radial-gradient(1px 1px at 15% 20%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 40% 70%, rgba(232,169,50,0.25), transparent),
+    radial-gradient(1px 1px at 80% 30%, rgba(82,232,199,0.2), transparent);
 
-  animation: sparkleFloat 8s infinite linear;
+  animation: floatSpark 10s infinite ease-in-out;
   opacity: 0.5;
 }
 
-@keyframes sparkleFloat {
+@keyframes floatSpark {
   0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  50% { transform: translateY(-12px); }
   100% { transform: translateY(0px); }
 }
 
 
 /* =========================================
-   HERO
+   GLASS SYSTEM (CORE WORLD MATERIAL)
+========================================= */
+
+.glass {
+  background: var(--glass);
+  backdrop-filter: blur(var(--blur));
+  -webkit-backdrop-filter: blur(var(--blur));
+
+  border: 1px solid var(--border);
+  border-radius: 22px;
+
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+
+  transition: all 0.4s ease;
+}
+
+/* LIGHT REFLECTION LAYER */
+.glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+    circle at 20% 10%,
+    rgba(255,255,255,0.08),
+    transparent 60%
+  );
+
+  pointer-events: none;
+}
+
+
+/* =========================================
+   HERO SECTION
 ========================================= */
 
 .hero {
@@ -72,150 +140,107 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: center;
-
-  position: relative;
-  overflow: hidden;
-
-  background: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee") center/cover;
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-}
-
-/* soft light sweep */
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: -50%;
-  background: radial-gradient(circle, rgba(197,168,117,0.12), transparent 60%);
-  animation: glowMove 6s infinite alternate;
-}
-
-@keyframes glowMove {
-  from { transform: translate(-10%, -10%); }
-  to { transform: translate(10%, 10%); }
-}
-
-.hero-content {
-  position: relative;
   text-align: center;
+
+  position: relative;
   z-index: 2;
 }
 
-/* ✨ AKRONIM SIGNATURE TITLE */
-.hero h1 {
-  font-family: 'Akronim', display;
+.hero-title {
+  font-family: var(--font-hero);
   font-size: clamp(60px, 8vw, 120px);
-  color: var(--gold);
-  text-shadow: 0 0 30px rgba(197,168,117,0.4);
-  letter-spacing: 4px;
+  letter-spacing: 6px;
+  color: #fff;
+  text-shadow: 0 0 25px rgba(255,255,255,0.15);
 }
 
-.hero p {
-  color: var(--muted);
+.subtitle {
+  opacity: 0.7;
   margin-top: 10px;
 }
 
 
 /* =========================================
-   SCENE TEXT
+   WORLD INTRO
 ========================================= */
 
-.scene {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
+.world-intro {
+  margin: 100px auto;
+  width: min(900px, 90%);
+  padding: 50px;
   text-align: center;
-  padding: 80px;
+}
 
-  font-size: clamp(18px, 2vw, 26px);
+.world-intro .accent {
+  color: var(--a-accent);
+  text-shadow: var(--glow-gold);
 }
 
 
 /* =========================================
-   PORTALS (LIVING CARDS)
+   PORTALS (ENTRY SYSTEM)
 ========================================= */
 
-.portals {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  align-items: center;
-  padding: 120px 20px;
-  background: var(--bg);
-}
-
 .portal {
+  margin: 80px auto;
   width: min(850px, 92%);
   padding: 50px;
-
-  background: var(--glass);
-  border: 1px solid var(--border);
-  backdrop-filter: blur(18px);
-
   text-align: center;
-  font-size: 22px;
 
-  position: relative;
-  overflow: hidden;
-
-  transition: 0.4s ease;
-  box-shadow: 0 25px 80px rgba(0,0,0,0.5);
-}
-
-/* ✨ shimmer sweep */
-.portal::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -120%;
-  width: 60%;
-  height: 100%;
-
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(255,255,255,0.08),
-    transparent
-  );
-
-  transform: skewX(-20deg);
-}
-
-.portal:hover::before {
-  animation: shimmer 1.2s ease forwards;
-}
-
-@keyframes shimmer {
-  to { left: 150%; }
+  font-size: 18px;
 }
 
 .portal:hover {
-  transform: translateY(-10px);
-  border-color: rgba(197,168,117,0.5);
-  box-shadow: 0 30px 90px rgba(0,0,0,0.6), var(--glow-gold);
+  transform: translateY(-8px);
+  box-shadow: 0 35px 100px rgba(0,0,0,0.65);
 }
 
 
 /* =========================================
-   FINAL SECTION
+   REALITY A MODE (FOREST)
+========================================= */
+
+.realm-a {
+  background: radial-gradient(circle at top, #2C4A44, #0B0D0E);
+}
+
+.realm-a .accent {
+  color: var(--a-accent);
+  text-shadow: var(--glow-gold);
+}
+
+.realm-a .danger {
+  color: var(--a-danger);
+  text-shadow: var(--glow-red);
+}
+
+
+/* =========================================
+   REALITY B MODE (ETHEREAL)
+========================================= */
+
+.realm-b {
+  background: radial-gradient(circle at top, #F2F4F3, #CFCFCF);
+  color: #111;
+}
+
+.realm-b .interactive {
+  color: var(--b-interactive);
+  text-shadow: var(--glow-teal);
+}
+
+
+/* =========================================
+   FINAL LAYER
 ========================================= */
 
 .final {
-  min-height: 60vh;
+  min-height: 50vh;
   display: flex;
   align-items: center;
   justify-content: center;
 
-  padding: 80px;
   text-align: center;
-
-  color: var(--muted);
-  background: linear-gradient(to top, #050607, #0B0D0E);
+  padding: 80px;
+  opacity: 0.8;
 }
